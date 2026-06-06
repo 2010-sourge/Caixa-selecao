@@ -1,0 +1,123 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+ 
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #5B5BD6;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+ 
+
+.toggle-input {
+  display: none;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 22px 40px;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  transition: box-shadow 0.3s ease;
+}
+ 
+.card:hover {
+  box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+}
+ 
+
+.track {
+  position: relative;
+  width: 80px;
+  height: 40px;
+  border-radius: 50px;
+  background: #dde0e8;
+  transition: background 0.35s ease;
+  flex-shrink: 0;
+}
+ 
+
+.thumb {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background 0.35s ease;
+}
+ 
+
+.label-text {
+  font-size: 1.8rem;
+  font-weight: 700;
+  position: relative;
+  min-width: 130px;
+}
+ 
+.text-disabled {
+  color: #b0b4c0;
+  display: block;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+ 
+.text-enabled {
+  color: #5B5BD6;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+ 
+
+ 
+/* Track fica roxo */
+.toggle-input:checked ~ .card .track {
+  background: #5B5BD6;
+}
+ 
+
+.toggle-input:checked ~ .card .thumb {
+  transform: translateX(40px);
+}
+ 
+
+.toggle-input:checked ~ .card .text-disabled {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+ 
+
+.toggle-input:checked ~ .card .text-enabled {
+  opacity: 1;
+  transform: translateY(0);
+}
+ 
+
+@media (max-width: 420px) {
+  .card {
+    padding: 18px 28px;
+    gap: 18px;
+  }
+  .label-text {
+    font-size: 1.4rem;
+    min-width: 100px;
+  }
+}
+ 
